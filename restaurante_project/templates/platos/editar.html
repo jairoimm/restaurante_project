@@ -1,13 +1,49 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Editar Plato</h2>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-warning">Actualizar</button>
-        <a href="{% url 'lista_platos' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-sm border-0 p-4">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <div class="bg-warning bg-opacity-15 text-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 56px; height: 56px;">
+                        <i class="bi bi-pencil-square fs-3 text-warning"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark">Editar Plato</h3>
+                    <p class="text-muted small">Modifica los campos necesarios para actualizar la información del plato.</p>
+                </div>
+
+                <form method="POST" class="needs-validation" novalidate>
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold text-dark">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.help_text %}
+                        <div class="form-text text-muted small">{{ field.help_text }}</div>
+                        {% endif %}
+                        {% if field.errors %}
+                        <div class="text-danger small mt-1">
+                            {% for error in field.errors %}
+                            <i class="bi bi-exclamation-circle me-1"></i>{{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <a href="{% url 'lista_platos' %}" class="btn btn-light border px-4">
+                            <i class="bi bi-arrow-left me-1"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-warning text-dark fw-bold px-4 shadow-sm">
+                            <i class="bi bi-check-lg me-1"></i> Actualizar Plato
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

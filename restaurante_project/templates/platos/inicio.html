@@ -1,16 +1,64 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<div class="container mt-5">
-    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm border text-center">
-        <div class="container-fluid py-5">
-            <h1 class="display-5 fw-bold text-dark">🍔 Sistema Restaurante</h1>
-            <p class="col-md-8 fs-4 mx-auto text-muted">
-                Bienvenido al sistema de administración de platos. Gestiona tu menú, precios y categorías de forma rápida y sencilla.
-            </p>
-            <a href="{% url 'lista_platos' %}" class="btn btn-primary btn-lg mt-3 px-4">
-                Ver Listado de Platos
-            </a>
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Hero Section -->
+        <div class="p-5 mb-5 bg-white rounded-4 shadow-sm border-0 position-relative overflow-hidden text-center" style="background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);">
+            <div class="py-4">
+                <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold mb-3 shadow-sm">
+                    <i class="bi bi-stars me-1"></i> Panel de Administración v2.0
+                </span>
+                <h1 class="display-4 fw-bold text-dark mb-3">Gestión Inteligente de tu Menú</h1>
+                <p class="col-md-8 fs-5 mx-auto text-muted mb-4">
+                    Administra tus platos, precios, categorías y disponibilidad en tiempo real con una interfaz moderna y optimizada.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{% url 'lista_platos' %}" class="btn btn-dark btn-lg px-4 shadow-sm">
+                        <i class="bi bi-journal-richtext me-2"></i> Ver Catálogo de Platos
+                    </a>
+                    <a href="{% url 'crear_plato' %}" class="btn btn-warning text-dark btn-lg px-4 fw-bold shadow-sm">
+                        <i class="bi bi-plus-circle me-2"></i> Agregar Plato Nuevo
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features / Info Cards -->
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 p-4 text-center">
+                    <div class="card-body">
+                        <div class="bg-warning bg-opacity-15 text-warning rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="bi bi-list-check fs-3 text-warning"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-2">Control de Menú</h4>
+                        <p class="text-muted small mb-0">Mantén organizado cada plato con su respectiva categoría y descripción detallada.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 text-center">
+                    <div class="card-body">
+                        <div class="bg-success bg-opacity-15 text-success rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="bi bi-currency-dollar fs-3 text-success"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-2">Precios Actualizados</h4>
+                        <p class="text-muted small mb-0">Gestiona tarifas competitivas y asegúrate de validar cada monto correctamente.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 p-4 text-center">
+                    <div class="card-body">
+                        <div class="bg-primary bg-opacity-15 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
+                            <i class="bi bi-shield-check fs-3 text-primary"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-2">Estado y Stock</h4>
+                        <p class="text-muted small mb-0">Marca rápidamente los platos como disponibles u ocultos según la temporada.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
