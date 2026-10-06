@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from .models import Plato
 from .forms import PlatoForm
@@ -9,6 +10,8 @@ from .forms import PlatoForm
 # Create your views here.
 
 #Pagina principal
+
+@login_required
 def inicio(request):
 
     return render(
@@ -17,6 +20,7 @@ def inicio(request):
     )
 
 #Listar
+@login_required
 def lista_platos(request):
 
     platos = Plato.objects.all()
@@ -29,6 +33,7 @@ def lista_platos(request):
 
 
 #Crear
+@login_required
 def crear_plato(request):
 
     if request.method == 'POST':
@@ -53,6 +58,8 @@ def crear_plato(request):
     )
 
 #Editar
+
+@login_required
 def editar_plato(request, id):
     
     plato = get_object_or_404(
@@ -84,6 +91,7 @@ def editar_plato(request, id):
     )
 
 #Eliminar
+@login_required
 def eliminar_plato(request, id):
     plato = get_object_or_404(
         Plato, 

@@ -16,6 +16,14 @@
                 <form method="POST" class="needs-validation" novalidate>
                     {% csrf_token %}
                     
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger py-2 small mb-3" role="alert">
+                        {% for error in form.non_field_errors %}
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i>{{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
                     {% for field in form %}
                     <div class="mb-3">
                         <label class="form-label fw-semibold text-dark">{{ field.label }}</label>
